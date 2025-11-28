@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calendário Janeiro 2026 - Aramis</title>
+</head>
+<body style="font-family:Arial;margin:20px;background:#ffffff;">
+
+<h1 style="color:#333;text-align:center;font-size:28px;margin-bottom:30px;">📅 CALENDÁRIO DE CAMPANHAS - JANEIRO 2026 - ARAMIS</h1>
+
+<div style="background:#fffacd;border:5px solid #ff0000;padding:30px;margin-bottom:30px;">
+<h2 style="color:#000;font-size:24px;margin-bottom:20px;">🔍 FILTROS</h2>
+
+<table style="width:100%;border-collapse:collapse;">
+<tr>
+<td style="padding:10px;vertical-align:top;">
+<label style="font-weight:bold;font-size:16px;">📅 Data De:</label><br>
+<input type="date" id="dataInicio" style="padding:8px;font-size:14px;width:180px;margin-top:5px;">
+</td>
+<td style="padding:10px;vertical-align:top;">
+<label style="font-weight:bold;font-size:16px;">📅 Data Até:</label><br>
+<input type="date" id="dataFim" style="padding:8px;font-size:14px;width:180px;margin-top:5px;">
+</td>
+<td style="padding:10px;vertical-align:top;">
+<label style="font-weight:bold;font-size:16px;">📊 Campanha Principal:</label><br>
+<select id="campanhaPrincipal" style="padding:8px;font-size:14px;width:250px;margin-top:5px;">
+<option value="">Todas</option>
+<option value="SALE FASE 1">SALE FASE 1 30% +10% OFF</option>
+<option value="SALE FASE 2">SALE FASE 2</option>
+<option value="SALE FASE 3">SALE FASE 3</option>
+</select>
+</td>
+</tr>
+<tr>
+<td style="padding:10px;vertical-align:top;">
+<label style="font-weight:bold;font-size:16px;">🎯 Campanha Secundária:</label><br>
+<select id="campanhaSecundaria" style="padding:8px;font-size:14px;width:180px;margin-top:5px;">
+<option value="">Todas</option>
+<option value="ARAMIS TECH">ARAMIS TECH</option>
+<option value="ARAMIS SUMMER">ARAMIS SUMMER</option>
+</select>
+</td>
+<td style="padding:10px;vertical-align:top;">
+<label style="font-weight:bold;font-size:16px;">📱 Canal:</label><br>
+<select id="canal" style="padding:8px;font-size:14px;width:180px;margin-top:5px;">
+<option value="">Todos</option>
+<option value="APP">APP</option>
+<option value="CDV">CDV</option>
+<option value="Franquias">Franquias</option>
+<option value="Full Price">Full Price</option>
+<option value="Outlet">Outlet</option>
+<option value="SITE">SITE</option>
+</select>
+</td>
+<td style="padding:10px;vertical-align:top;">
+<label style="font-weight:bold;font-size:16px;">✅ Status:</label><br>
+<select id="status" style="padding:8px;font-size:14px;width:250px;margin-top:5px;">
+<option value="">Todos</option>
+<option value="ENTREGUE">ENTREGUE</option>
+<option value="EM ABERTO">EM ABERTO</option>
+<option value="EM ANDAMENTO">EM ANDAMENTO</option>
+</select>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="padding:20px 10px 0 10px;">
+<button onclick="limparFiltros()" style="background:#ff0000;color:#fff;border:none;padding:12px 30px;font-size:16px;font-weight:bold;cursor:pointer;border-radius:5px;">🔄 LIMPAR FILTROS</button>
+<button onclick="aplicarFiltros()" style="background:#008000;color:#fff;border:none;padding:12px 30px;font-size:16px;font-weight:bold;cursor:pointer;border-radius:5px;margin-left:10px;">✓ APLICAR FILTROS</button>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="background:#f9f9f9;padding:20px;border:2px solid #ccc;">
+<h3 style="color:#333;margin-bottom:15px;">📋 LEGENDA:</h3>
+<span style="background:#ffcccc;padding:5px 15px;margin-right:15px;border-radius:3px;font-weight:bold;">🔴 FASE 1 (01-10/01)</span>
+<span style="background:#ffddaa;padding:5px 15px;margin-right:15px;border-radius:3px;font-weight:bold;">🟠 FASE 2 (11-16/01)</span>
+<span style="background:#ccffcc;padding:5px 15px;border-radius:3px;font-weight:bold;">🟢 FASE 3 (17-31/01)</span>
+</div>
+
+<table id="tabelaCalendario" style="width:100%;border-collapse:collapse;margin-top:30px;background:#fff;">
+<thead>
+<tr style="background:#333;color:#fff;">
+<th style="border:1px solid #333;padding:12px;text-align:left;">Data</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Dia</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Campanha Principal</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Campanha Secundária</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Formatos</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Canais</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Prazo</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Status</th>
+<th style="border:1px solid #333;padding:12px;text-align:left;">Obs</th>
+</tr>
+</thead>
+<tbody id="corpoTabela">
+<tr style="background:#ffcccc;" data-date="2026-01-01" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="APP, CDV, Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine, Outlet" data-status="ENTREGUE">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">01/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quinta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, CDV, Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine, Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;"><span style="background:#90EE90;padding:3px 8px;border-radius:3px;font-weight:bold;">ENTREGUE</span></td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-02" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="" data-status="EM ABERTO">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">02/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Sexta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;"><span style="background:#FFB6C1;padding:3px 8px;border-radius:3px;font-weight:bold;">EM ABERTO</span></td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-03" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="Franquias loja, Full Price loja, SITE" data-status="ENTREGUE 0112">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">03/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Sábado</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Full Price loja, SITE</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;"><span style="background:#90EE90;padding:3px 8px;border-radius:3px;font-weight:bold;">ENTREGUE</span></td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-04" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="Franquias loja, Full Price loja, SITE" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">04/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Domingo</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Full Price loja, SITE</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-05" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="Franquias loja, Full Price loja, SITE" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">05/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Segunda-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Full Price loja, SITE</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-06" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">06/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Terça-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-07" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">07/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quarta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-08" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">08/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quinta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-09" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">09/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Sexta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 10.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffcccc;" data-date="2026-01-10" data-campanha-principal="SALE FASE 1" data-campanha-secundaria="ARAMIS TECH" data-canais="APP, Franquias loja, Full Price loja" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">10/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Sábado</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 1 30% +10% OFF</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffddaa;" data-date="2026-01-11" data-campanha-principal="SALE FASE 2" data-campanha-secundaria="ARAMIS TECH" data-canais="APP, Franquias loja, Full Price loja" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">11/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Domingo</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 2</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffddaa;" data-date="2026-01-12" data-campanha-principal="SALE FASE 2" data-campanha-secundaria="ARAMIS TECH" data-canais="APP, Franquias loja, Full Price loja" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">12/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Segunda-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 2</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffddaa;" data-date="2026-01-13" data-campanha-principal="SALE FASE 2" data-campanha-secundaria="ARAMIS TECH" data-canais="APP" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">13/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Terça-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 2</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffddaa;" data-date="2026-01-14" data-campanha-principal="SALE FASE 2" data-campanha-secundaria="ARAMIS TECH" data-canais="Franquias loja, Full Price loja" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">14/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quarta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 2</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Full Price loja</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffddaa;" data-date="2026-01-15" data-campanha-principal="SALE FASE 2" data-campanha-secundaria="ARAMIS TECH" data-canais="" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">15/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quinta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 2</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ffddaa;" data-date="2026-01-16" data-campanha-principal="SALE FASE 2" data-campanha-secundaria="ARAMIS TECH" data-canais="" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">16/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Sexta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 2</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-17" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS TECH" data-canais="Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">17/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Sábado</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-18" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS TECH" data-canais="Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">18/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Domingo</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS TECH</td>
+<td style="border:1px solid #ddd;padding:10px;">ATRIBUTOS DE PRODUTO+ CARROSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-19" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">19/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Segunda-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-20" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">20/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Terça-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 15.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-21" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">21/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quarta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-22" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">22/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quinta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">Franquias loja, Franquias vitrine, Full Price loja, Full Price vitrine</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-23" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="APP" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">23/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Sexta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-24" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="CDV" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">24/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Sábado</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">CDV</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-25" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="CDV" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">25/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Domingo</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">CDV</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-26" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="CDV" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">26/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Segunda-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">CDV</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-27" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="APP, Franquias loja, Full Price loja, Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">27/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Terça-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja, Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-28" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="APP, Franquias loja, Full Price loja, Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">28/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quarta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja, Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-29" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="APP, Franquias loja, Full Price loja, Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">29/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Quinta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja, Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-30" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="APP, Franquias loja, Full Price loja, Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;">30/01</td>
+<td style="border:1px solid #ddd;padding:10px;">Sexta-feira</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja, Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+<tr style="background:#ccffcc;" data-date="2026-01-31" data-campanha-principal="SALE FASE 3" data-campanha-secundaria="ARAMIS SUMMER" data-canais="APP, Franquias loja, Full Price loja, Outlet" data-status="">
+<td style="border:1px solid #ddd;padding:10px;font-weight:bold;background:#fff8dc;">31/01</td>
+<td style="border:1px solid #ddd;padding:10px;background:#fff8dc;">Sábado</td>
+<td style="border:1px solid #ddd;padding:10px;">SALE FASE 3</td>
+<td style="border:1px solid #ddd;padding:10px;">ARAMIS SUMMER</td>
+<td style="border:1px solid #ddd;padding:10px;">ESCOLHAS PRO VERÃO 2026+CARROSSEL</td>
+<td style="border:1px solid #ddd;padding:10px;">APP, Franquias loja, Full Price loja, Outlet</td>
+<td style="border:1px solid #ddd;padding:10px;">ATÉ 22.01</td>
+<td style="border:1px solid #ddd;padding:10px;">-</td>
+<td style="border:1px solid #ddd;padding:10px;"><input type="text" style="width:100%;padding:5px;border:1px solid #ccc;"></td>
+</tr>
+</tbody>
+</table>
+
+<button onclick="window.print()" style="position:fixed;bottom:20px;right:20px;background:#ff6600;color:#fff;border:none;padding:15px 25px;font-size:16px;font-weight:bold;cursor:pointer;border-radius:50px;box-shadow:0 4px 8px rgba(0,0,0,0.3);">🖨️ IMPRIMIR</button>
+
+<script>
+function aplicarFiltros() {
+    const dataInicio = document.getElementById('dataInicio').value;
+    const dataFim = document.getElementById('dataFim').value;
+    const campanhaPrincipal = document.getElementById('campanhaPrincipal').value;
+    const campanhaSecundaria = document.getElementById('campanhaSecundaria').value;
+    const canal = document.getElementById('canal').value;
+    const status = document.getElementById('status').value;
+    
+    const linhas = document.querySelectorAll('#corpoTabela tr');
+    
+    linhas.forEach(linha => {
+        let mostrar = true;
+        
+        const dataLinha = linha.getAttribute('data-date');
+        const campanhaPrincipalLinha = linha.getAttribute('data-campanha-principal');
+        const campanhaSecundariaLinha = linha.getAttribute('data-campanha-secundaria');
+        const canaisLinha = linha.getAttribute('data-canais');
+        const statusLinha = linha.getAttribute('data-status');
+        
+        if (dataInicio && dataLinha < dataInicio) mostrar = false;
+        if (dataFim && dataLinha > dataFim) mostrar = false;
+        if (campanhaPrincipal && !campanhaPrincipalLinha.includes(campanhaPrincipal)) mostrar = false;
+        if (campanhaSecundaria && !campanhaSecundariaLinha.includes(campanhaSecundaria)) mostrar = false;
+        if (canal && !canaisLinha.includes(canal)) mostrar = false;
+        if (status && !statusLinha.includes(status)) mostrar = false;
+        
+        linha.style.display = mostrar ? '' : 'none';
+    });
+}
+
+function limparFiltros() {
+    document.getElementById('dataInicio').value = '';
+    document.getElementById('dataFim').value = '';
+    document.getElementById('campanhaPrincipal').value = '';
+    document.getElementById('campanhaSecundaria').value = '';
+    document.getElementById('canal').value = '';
+    document.getElementById('status').value = '';
+    
+    const linhas = document.querySelectorAll('#corpoTabela tr');
+    linhas.forEach(linha => linha.style.display = '');
+}
+
+document.getElementById('dataInicio').addEventListener('change', aplicarFiltros);
+document.getElementById('dataFim').addEventListener('change', aplicarFiltros);
+document.getElementById('campanhaPrincipal').addEventListener('change', aplicarFiltros);
+document.getElementById('campanhaSecundaria').addEventListener('change', aplicarFiltros);
+document.getElementById('canal').addEventListener('change', aplicarFiltros);
+document.getElementById('status').addEventListener('change', aplicarFiltros);
+</script>
+
+</body>
+</html>
